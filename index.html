@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab4Soni Network and Security Lab</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef2f3;
+        }
+        header {
+            background: linear-gradient(to right, #4e73df, #1cc88a);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            font-size: 3.5em;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        header p {
+            font-size: 1.5em;
+            margin: 10px 0 0;
+        }
+        nav {
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+        }
+        nav a {
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: background 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #1cc88a;
+        }
+        .welcome-message {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-top: 50px;
+            color: #333;
+        }
+        .ip-address {
+            text-align: center;
+            font-size: 1.2em;
+            color: #555;
+            margin-top: 10px;
+        }
+        section {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px 20px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+            margin: 20px;
+            padding: 30px;
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        .card h2 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .card p {
+            font-size: 1.1em;
+            color: #666;
+            line-height: 1.5;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+            margin-top: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to Lab4Soni Network and Security Lab</h1>
+    <p>A Dedicated Environment for Network and Security Research and Testing</p>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Lab Setup</a>
+    <a href="#">Research</a>
+    <a href="#">Contact</a>
+</nav>
+
+<section>
+    <div class="welcome-message">
+        Explore the Lab Environment for Cutting-Edge Network and Security Research
+    </div>
+
+    <div class="ip-address">
+        Your Source IP: <span id="user-ip" class="loader"></span>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Network Testing</h2>
+            <p>Test network performance and behavior under various scenarios.</p>
+        </div>
+        <div class="card">
+            <h2>Security Lab</h2>
+            <p>Simulate and mitigate security threats in a controlled environment.</p>
+        </div>
+        <div class="card">
+            <h2>Research and Development</h2>
+            <p>Conduct research on the latest networking and security technologies.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 Lab4Soni Network and Security Lab. All rights reserved.</p>
+</footer>
+
+<script>
+    // Fetch user's IP address and display it
+    window.onload = function() {
+        const ipDisplay = document.getElementById('user-ip');
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                ipDisplay.textContent = data.ip;
+            })
+            .catch(error => {
+                ipDisplay.textContent = 'Unable to retrieve IP';
+                console.error('Error fetching IP address:', error);
+            });
+    };
+</script>
+
+</body>
+</html>
